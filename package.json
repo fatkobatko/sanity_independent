@@ -5,9 +5,9 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
+    "dev": "dotenv -e .env -- sanity dev",
     "start": "sanity start",
-    "build": "sanity build --base-path=/",
+    "build": "dotenv -e .env -- sanity build --base-path=/",
     "preview": "npm run build && npx serve dist -l 4321",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
     "@types/react": "^19.1",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^9.28",
     "prettier": "^3.5",
     "typescript": "^5.8"

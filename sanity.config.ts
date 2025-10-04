@@ -1,20 +1,18 @@
+// sanity.config.ts
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schema} from './schemaTypes'
+import {schema} from './schemaTypes' // <- point to your real index.ts
 
-
+const enableVision = process.env.SANITY_STUDIO_ENABLE_VISION === 'true'
 
 export default defineConfig({
   name: 'default',
-  title: 'sanity_independent',
-
-  projectId: 'evrgpidr',
-  dataset: 'production',
-
-  plugins: [structureTool(), visionTool()],
-
-  schema: {
-    ...schema,
-  },
+  title: 'Sanity Studio',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,   // e.g. 'y1d9gxkm'
+  dataset: process.env.SANITY_STUDIO_DATASET!,        // e.g. 'production'
+  basePath: '/',                                      // keep root on Pages
+  plugins: [
+    ...(enableVision ? [visionTool()] : []),
+  ],
+  schema: schema,
 })
