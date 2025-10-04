@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
-    "build": "sanity build",
+    "build": "sanity build --base-path=/",
+    "preview": "npm run build && npx serve dist -l 4321",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
@@ -15,10 +16,10 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^4.10.1",
-    "react": "^19.1",
-    "react-dom": "^19.1",
-    "sanity": "^4.10.1",
+    "@sanity/vision": "4.10.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "sanity": "4.10.2",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
